@@ -1,0 +1,79 @@
+.player-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 2px solid #c41e3a;
+  border-radius: 12px;
+  padding: 20px;
+  background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%);
+  box-shadow: 0 4px 20px rgba(196, 30, 58, 0.3), 0 0 20px rgba(196, 30, 58, 0.1);
+  width: 100%;
+  max-width: 700px;
+  height: 200px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.position-badge {
+  font-size: 32px;
+  font-weight: 700;
+  color: #c41e3a;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  min-width: 50px;
+  text-align: center;
+}
+
+.player-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(196, 30, 58, 0.5), 0 0 30px rgba(196, 30, 58, 0.2);
+}
+
+.player-card img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+  border: 2px solid #c41e3a;
+}
+
+.player-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.player-card p {
+  margin: 0;
+  color: #e0e0e0;
+}
+
+.player-name {
+  font-size: 28px;
+  font-weight: 900;
+  color: #ff0000;
+  text-shadow: 
+    0 0 10px #ff6600,
+    0 0 20px #ff3300,
+    0 0 30px #ff0000,
+    0 0 40px #cc0000,
+    2px 2px 4px rgba(0, 0, 0, 0.8);
+  letter-spacing: 1px;
+  font-style: italic;
+}
+
+.player-winnings {
+  font-size: 16px;
+  color: #ff6b6b;
+}
+
+.player-winnings.positive {
+  color: #4a9d6f;
+  font-weight: 600;
+}
+
+.player-winnings.negative {
+  color: #ff4444;
+  font-weight: 600;
+}

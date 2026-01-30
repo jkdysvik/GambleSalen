@@ -1,33 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react'
 import './App.css'
+import PlayerCard from './components/player-card'
+import NavBar from './components/nav-bar'
+
+import { db } from '../firebase'; // Adjust path if needed
+import { collection, getDocs } from 'firebase/firestore';
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+        const querySnapshot = await getDocs(collection(db, "Spillere"));
+        const items = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        items.sort((a, b) => (b.vunnet-b.kjøptinn) - (a.vunnet-a.kjøptinn));
+        setData(items);
+        };
+        fetchData();
+    }, []);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <NavBar />
+      {data.map((Spiller, index) => (
+        <PlayerCard position={index + 1} name={Spiller.navn} kjøptinn={Spiller.kjøptinn} vunnet={Spiller.vunnet} />
+      ))}
     </>
   )
 }
