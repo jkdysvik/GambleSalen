@@ -14,7 +14,7 @@ function App() {
         const fetchData = async () => {
         const querySnapshot = await getDocs(collection(db, "Spillere"));
         const items = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        items.sort((a, b) => (b.vunnet-b.kjøptinn) - (a.vunnet-a.kjøptinn));
+        items.sort((a,b) => b.netto - a.netto);
         setData(items);
         };
         fetchData();
@@ -24,7 +24,7 @@ function App() {
     <>
       <NavBar />
       {data.map((Spiller, index) => (
-        <PlayerCard position={index + 1} name={Spiller.navn} kjøptinn={Spiller.kjøptinn} vunnet={Spiller.vunnet} />
+        <PlayerCard position={index + 1} name={Spiller.navn} netto={Spiller.netto} />
       ))}
     </>
   )
