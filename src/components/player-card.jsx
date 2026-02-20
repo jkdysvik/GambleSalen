@@ -18,7 +18,7 @@ export default function PlayerCard({ position, name, netto }) {
                         />
             <div className="player-info">
                 <p className="player-name">{name}</p>
-                <p className={`player-winnings ${winningsClass}`}>Netto gain: {totalt_vunnet}</p>
+                <p className={`player-winnings ${winningsClass}`}>Netto gain: {totalt_vunnet}k</p>
             </div>
         </div>
         </>
